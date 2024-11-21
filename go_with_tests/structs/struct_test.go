@@ -8,13 +8,13 @@ import (
 func TestPerimeter(t *testing.T) {
 	t.Run("Test rectangle perimeter", func(t *testing.T) {
 		rectangle := Rectangle{10.0, 10.0}
-		got := Perimeter(rectangle)
+		got := rectangle.Perimeter()
 		want := 40.0
 		assertCorrect(t, got, want)
 	})
 	t.Run("Test circle perimeter", func(t *testing.T) {
 		circle := Circle{1.00}
-		got := Perimeter(circle)
+		got := circle.Perimeter()
 		want := 2 * math.Pi
 		assertCorrect(t, got, want)
 	})
@@ -23,13 +23,13 @@ func TestPerimeter(t *testing.T) {
 func TestArea(t *testing.T) {
 	t.Run("Test rectangle area", func(t *testing.T) {
 		rectangle := Rectangle{10.0, 10.0}
-		got := Area(rectangle)
+		got := rectangle.Area()
 		want := 100.0
 		assertCorrect(t, got, want)
 	})
 	t.Run("Test circle area", func(t *testing.T) {
 		circle := Circle{1.00}
-		got := Area(circle)
+		got := circle.Area()
 		want := math.Pi
 		assertCorrect(t, got, want)
 	})
@@ -37,6 +37,6 @@ func TestArea(t *testing.T) {
 
 func assertCorrect(t testing.TB, got, want float64) {
 	if got != want {
-		t.Errorf("got %.2f, want %.2f", got, want)
+		t.Errorf("got %g, want %g", got, want)
 	}
 }
