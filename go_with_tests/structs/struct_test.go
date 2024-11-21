@@ -14,7 +14,7 @@ func TestPerimeter(t *testing.T) {
 		{Circle{1.00}, 2 * math.Pi},
 	}
 	for _, tt := range perimeterTests {
-		got := tt.shape.Area()
+		got := tt.shape.Perimeter()
 		assertCorrect(t, got, tt.want)
 	}
 }
