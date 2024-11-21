@@ -29,20 +29,19 @@ func TestSumAll(t *testing.T) {
 }
 
 func TestSumAllTails(t *testing.T) {
-	t.Run("Testing standard case", func (t *testing.T) {
-		got := SumAllTails([]int{1,2}, []int{9,9})
+	checkSums := func(t testing.TB, got, want []int) {
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("expected %v got %v", want, got)
+		}
+	}
+	t.Run("Testing standard case", func(t *testing.T) {
+		got := SumAllTails([]int{1, 2}, []int{9, 9})
 		want := []int{2, 9}
-	
-		if !reflect.DeepEqual(got, want) {
-			t.Errorf("expected %v got %v", want, got)
-		}
+		checkSums(t, got, want)
 	})
-	t.Run("Testing empty case", func (t *testing.T) {
-		got := SumAllTails([]int{}, []int{3,4,5})
+	t.Run("Testing empty case", func(t *testing.T) {
+		got := SumAllTails([]int{}, []int{3, 4, 5})
 		want := []int{0, 9}
-
-		if !reflect.DeepEqual(got, want) {
-			t.Errorf("expected %v got %v", want, got)
-		}
+		checkSums(t, got, want)
 	})
 }
