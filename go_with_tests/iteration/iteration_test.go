@@ -31,7 +31,9 @@ func ExampleRepeat() {
 }
 
 func BenchmarkRepeat(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Repeat("a", 5)
+	for repeatCount := 1; repeatCount < 100_000; repeatCount *= 10 {
+		for i := 0; i < b.N; i++ {
+			Repeat("a", repeatCount)
+		}
 	}
 }
