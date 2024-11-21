@@ -9,6 +9,6 @@ func Sum(numbers []int) int {
 	return sum
 }
 
-func SumAll(numbersToSum [][]int) []int {
+func SumAll(numbersToSum ...[]int) []int {
 	return nil
 }
