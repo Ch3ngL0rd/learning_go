@@ -4,7 +4,7 @@ import "testing"
 
 func TestIteration(t *testing.T) {
 	t.Run("Testing standard repeat", func(t *testing.T) {
-		repeated := Repeat("a", 0)
+		repeated := Repeat("a", 5)
 		expected := "aaaaa"
 
 		if repeated != expected {
