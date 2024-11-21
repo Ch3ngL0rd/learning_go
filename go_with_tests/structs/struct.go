@@ -36,3 +36,11 @@ func (c Circle) Area() float64 {
 func (c Circle) Perimeter() float64 {
 	return 2 * math.Pi * c.Radius
 }
+
+func (t Triangle) Area() float64 {
+	return 0
+}
+
+func (t Triangle) Perimeter() float64 {
+	return 0
+}
