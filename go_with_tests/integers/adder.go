@@ -1,5 +1,5 @@
 package main
 
 func Add(x, y int) (sum int) {
-	return 0
+	return x + y
 }
