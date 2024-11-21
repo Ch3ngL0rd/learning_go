@@ -11,6 +11,11 @@ type Circle struct {
 	Radius float64
 }
 
+type Triangle struct {
+	Base float64
+	Height float64
+}
+
 type Shape interface {
 	Area() float64
 	Perimeter() float64
