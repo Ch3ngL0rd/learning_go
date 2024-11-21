@@ -12,11 +12,11 @@ func TestIteration(t *testing.T) {
 		}
 	})
 	t.Run("Testing variable amount of repeats", func(t *testing.T) {
-		repeated := Repeat("abc",4)
+		repeated := Repeat("abc", 4)
 		expected := "abcabcabcabc"
 
 		if repeated != expected {
-			t.Errorf("expected %q but got %q",expected, repeated)
+			t.Errorf("expected %q but got %q", expected, repeated)
 		}
 	})
 }
