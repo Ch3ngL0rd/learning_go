@@ -13,6 +13,7 @@ type Circle struct {
 
 type Shape interface {
 	Area() float64
+	Perimeter() float64
 }
 
 func (r Rectangle) Area() float64 {
