@@ -18,5 +18,13 @@ func SumAll(numbersToSum ...[]int) []int {
 }
 
 func SumAllTails(numbersToSum ...[]int) []int {
-	return []int{}
+	var tail_sums []int
+	for _, numbers := range numbersToSum {
+		sum := Sum(numbers)
+		if len(numbers) > 1 {
+			sum -= numbers[0]
+		}
+		tail_sums = append(tail_sums, sum)
+	}
+	return tail_sums
 }
