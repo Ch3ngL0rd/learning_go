@@ -20,8 +20,7 @@ func SumAll(numbersToSum ...[]int) []int {
 func SumAllTails(numbersToSum ...[]int) []int {
 	var tail_sums []int
 	for _, numbers := range numbersToSum {
-		sum := Sum(numbers[1:])
-		tail_sums = append(tail_sums, sum)
+		tail_sums = append(tail_sums, Sum(numbers[1:]))
 	}
 	return tail_sums
 }
