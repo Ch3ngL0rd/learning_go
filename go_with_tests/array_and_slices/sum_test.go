@@ -33,6 +33,6 @@ func TestSumAllTails(t *testing.T) {
 	want := []int{2, 9}
 
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("expected %v got %v", expected, want)
+		t.Errorf("expected %v got %v", want, got)
 	}
 }
