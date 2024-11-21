@@ -17,5 +17,5 @@ func TestArea(t *testing.T) {
 func assertCorrect(t testing.TB, got, want float64) {
 	if got != want {
 		t.Errorf("got %.2f, want %.2f", got, want)
-	}	
+	}
 }
