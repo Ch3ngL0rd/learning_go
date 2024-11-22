@@ -40,6 +40,11 @@ func TestDictionary(t *testing.T) {
 		assertError(t, err, ErrWordExists)
 		assertDefinition(t, dictionary, word, first_definition)
 	})
+	t.Run("Updating word definition", func(t *testing.T) {
+		dictionary := Dictionary{"Zac", "A chill guy"}
+		dictionary.Update("Zac", "A cool guy")
+		assertDefinition(t, dictionary, "Zac", "A cool guy")
+	})
 }
 
 func assertDefinition(t *testing.T, d Dictionary, word, definition string) {
