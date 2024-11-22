@@ -42,7 +42,7 @@ func (d *Dictionary) Update(word, definition string) error {
 
 	switch err {
 	case ErrUndefinedWord:
-		return err
+		return ErrWordNotFound
 	case nil:
 		(*d)[word] = definition
 		return nil
