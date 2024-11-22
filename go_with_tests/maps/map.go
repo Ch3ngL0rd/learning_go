@@ -14,8 +14,8 @@ const (
 
 type Dictionary map[string]string
 
-func (d *Dictionary) Search(word string) (definition string, err error) {
-	value, ok := (*d)[word]
+func (d Dictionary) Search(word string) (definition string, err error) {
+	value, ok := d[word]
 	if !ok {
 		return "", ErrUndefinedWord
 	}
