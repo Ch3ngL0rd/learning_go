@@ -47,6 +47,4 @@ func (d *Dictionary) Update(word, definition string) error {
 	default:
 		return err
 	}
-	
-	return nil
 }
