@@ -21,6 +21,15 @@ func TestDictionary(t *testing.T) {
 
 		assertError(t, err, ErrUndefinedWord)
 	})
+	t.Run("Allow adding words to dictionary", func(t *testing.T) {
+		dictionary := Dictionary{}
+		dictionary.Add("test", "this is just a test")
+
+		result, err := dictionary.Search("test")
+
+		assertError(t, err, nil)
+		assertStrings(t, result, "this is just a test")
+	})
 }
 
 func assertStrings(t *testing.T, result, expected string) {
