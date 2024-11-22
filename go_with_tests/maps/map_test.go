@@ -1,6 +1,9 @@
 package maps
 
-import "testing"
+import (
+	"testing"
+	"errors"
+)
 
 func TestDictionary(t *testing.T) {
 	t.Run("Test fetching words", func(t *testing.T) {
@@ -59,7 +62,7 @@ func assertStrings(t *testing.T, result, expected string) {
 func assertError(t *testing.T, result, expected error) {
 	t.Helper()
 
-	if result != expected {
+	if !errors.Is(result, expected) {
 		t.Fatalf("expected error %q, got %q", expected, result)
 	}
 }
