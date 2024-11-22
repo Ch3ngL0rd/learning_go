@@ -1,6 +1,9 @@
 package maps
 
-import "testing"
+import (
+	"errors"
+	"testing"
+)
 
 func TestDictionary(t *testing.T) {
 	t.Run("Test fetching words", func(t *testing.T) {
@@ -25,6 +28,20 @@ func TestDictionary(t *testing.T) {
 		dictionary.Add(word, definition)
 
 		assertDefinition(t, dictionary, word, definition)
+	})
+	t.Run("Error on adding word twice", func(t *testing.T) {
+		word := "zac"
+		first_definition := "a chill guy"
+		second_definition := "the 'tism strikes again"
+
+		dictionary := Dictionary{}
+		err_one := dictionary.Add(word, first_definition)
+		assertError(t, err_one, nil)
+		assertDefinition(t, dictionary, word, first_definition)
+
+		err_two := dictionary.Add(word, second_definition)
+		assertError(t, err_two, errors.New("Word inserted twice"))
+		assertDefinition(t, dictionary, word, first_definition)
 	})
 }
 
