@@ -8,9 +8,19 @@ func TestDictionary(t *testing.T) {
 		definition := "this is just a test"
 		dictionary := Dictionary{word : definition}
 
-		result := dictionary.Search(word)
+		result, err := dictionary.Search(word)
 
 		assertStrings(t, result, definition)
+	})
+	t.Run("Test fetching non-existant word", func (t *testing.T) {
+		word := "hello"
+		dictionary := Dictionary{}
+
+		result, err := dictionary.Search(word)
+
+		if err == nil {
+			t.Errorf("Expected word missing error, got %v", err)
+		}
 	})
 }
 
