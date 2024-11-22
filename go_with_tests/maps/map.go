@@ -16,10 +16,16 @@ func (d Dictionary) Search(word string) (definition string, err error) {
 }
 
 func (d Dictionary) Add(word, definition string) error {
-	_, ok := d[word]
-	if ok {
+	_, err := d.Search(word)
+
+	switch err{
+	case ErrUndefinedWord:
+		d[word] = definition
+	case nil:
 		return ErrWordExists
+	default:
+		return err
 	}
-	d[word] = definition
+
 	return nil
 }
