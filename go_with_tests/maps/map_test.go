@@ -10,10 +10,7 @@ func TestDictionary(t *testing.T) {
 
 		result, err := dictionary.Search(word)
 
-		if err != nil {
-			t.Errorf("Expected nil error, got %q", err)
-		}
-
+		assertError(t, err, nil)
 		assertStrings(t, result, definition)
 	})
 	t.Run("Test fetching non-existant word", func (t *testing.T) {
@@ -22,9 +19,7 @@ func TestDictionary(t *testing.T) {
 
 		_, err := dictionary.Search(word)
 
-		if err == nil {
-			t.Errorf("Expected word missing error, got %q", err)
-		}
+		assertError(t, err, ErrUndefinedWord)
 	})
 }
 
@@ -33,5 +28,13 @@ func assertStrings(t *testing.T, result, expected string) {
 
 	if result != expected {
 		t.Errorf("expected %q, got %q", expected, result)
+	}
+}
+
+func assertError(t *testing.T, result, expected error) {
+	t.Helper() 
+
+	if result != expected {
+		t.Errorf("expected error %q, got %q", expected, result)
 	}
 }
