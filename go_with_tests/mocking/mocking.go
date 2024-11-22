@@ -6,5 +6,8 @@ import (
 )
 
 func Countdown(out io.Writer) {
-	fmt.Fprintf(out, "3\n\t2\n\t1\n\tGo!")
+	for i := 3; i > 0; i-- {
+		fmt.Fprintf(out, "%v\n", i)
+	}
+	fmt.Fprintf(out, "Go!")
 }
