@@ -6,9 +6,9 @@ func TestDictionary(t *testing.T) {
 	t.Run("Test fetching words", func (t *testing.T) {
 		word := "test"
 		definition := "this is just a test"
-		dictionary := map[string]string{word : definition}
+		dictionary := Dictionary{word : definition}
 
-		result := Search(dictionary, word)
+		result := dictionary.Search(word)
 
 		assertStrings(t, result, definition)
 	})
