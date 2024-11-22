@@ -50,6 +50,12 @@ func TestDictionary(t *testing.T) {
 		err := dictionary.Update("Zac", "A chill guy")
 		assertError(t, err, ErrWordNotFound)
 	})
+	t.Run("Delete a word", func(t *testing.T) {
+		dictionary := Dictionary{"Zac": "A chill guy"}
+		dictionary.Delete("Zac")
+		_, err := dictionary.Search("Zac")
+		assertError(t, err, ErrUndefinedWord)
+	})
 }
 
 func assertDefinition(t *testing.T, d Dictionary, word, definition string) {
