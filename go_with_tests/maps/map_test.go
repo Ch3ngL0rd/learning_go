@@ -48,7 +48,7 @@ func TestDictionary(t *testing.T) {
 	t.Run("Update non-existant word", func(t *testing.T) {
 		dictionary := Dictionary{}
 		err := dictionary.Update("Zac", "A chill guy")
-		assertError(t, err, ErrUndefinedWord)
+		assertError(t, err, ErrWordNotFound)
 	})
 }
 

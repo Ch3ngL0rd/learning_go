@@ -9,6 +9,7 @@ func (e DictionaryErr) Error() string {
 const (
 	ErrUndefinedWord = DictionaryErr("Word not found in dictionary")
 	ErrWordExists    = DictionaryErr("Word already exists in dictionary")
+	ErrWordNotFound  = DictionaryErr("Cannot update word without definition")
 )
 
 type Dictionary map[string]string
