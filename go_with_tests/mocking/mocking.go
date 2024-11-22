@@ -5,6 +5,6 @@ import (
 	"io"
 )
 
-func Countdown(writer io.Writer) {
-	fmt.Fprintf(writer, "3")
+func Countdown(out io.Writer) {
+	fmt.Fprintf(out, "3")
 }
