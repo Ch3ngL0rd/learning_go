@@ -1,8 +1,8 @@
 package maps
 
 import (
-	"testing"
 	"errors"
+	"testing"
 )
 
 func TestDictionary(t *testing.T) {

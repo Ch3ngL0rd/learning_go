@@ -5,9 +5,10 @@ type DictionaryErr string
 func (e DictionaryErr) Error() string {
 	return string(e)
 }
+
 const (
 	ErrUndefinedWord = DictionaryErr("Word not found in dictionary")
-	ErrWordExists = DictionaryErr("Word already exists in dictionary")
+	ErrWordExists    = DictionaryErr("Word already exists in dictionary")
 )
 
 type Dictionary map[string]string
