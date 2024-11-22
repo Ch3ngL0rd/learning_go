@@ -35,6 +35,6 @@ func assertError(t *testing.T, result, expected error) {
 	t.Helper() 
 
 	if result != expected {
-		t.Errorf("expected error %q, got %q", expected, result)
+		t.Fatal("expected error %q, got %q", expected, result)
 	}
 }
