@@ -5,6 +5,7 @@ import "errors"
 type Dictionary map[string]string
 
 var ErrUndefinedWord = errors.New("Word not found in dictionary")
+var ErrWordExists = errors.New("Word already exists in dictionary")
 
 func (d Dictionary) Search(word string) (definition string, err error) {
 	value, ok := d[word]
@@ -15,6 +16,10 @@ func (d Dictionary) Search(word string) (definition string, err error) {
 }
 
 func (d Dictionary) Add(word, definition string) error {
+	_, ok := d[word]
+	if ok {
+		return ErrWordExists
+	}
 	d[word] = definition
 	return nil
 }
