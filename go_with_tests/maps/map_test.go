@@ -31,7 +31,7 @@ func TestDictionary(t *testing.T) {
 		first_definition := "a chill guy"
 		second_definition := "the 'tism strikes again"
 
-		dictionary := Dictionary{word : first_definition}
+		dictionary := Dictionary{word: first_definition}
 
 		err := dictionary.Add(word, second_definition)
 		assertError(t, err, ErrWordExists)

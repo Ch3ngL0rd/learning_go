@@ -18,7 +18,7 @@ func (d Dictionary) Search(word string) (definition string, err error) {
 func (d Dictionary) Add(word, definition string) error {
 	_, err := d.Search(word)
 
-	switch err{
+	switch err {
 	case ErrUndefinedWord:
 		d[word] = definition
 	case nil:
