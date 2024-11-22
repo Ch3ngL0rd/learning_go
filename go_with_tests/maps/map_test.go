@@ -8,10 +8,7 @@ func TestDictionary(t *testing.T) {
 		definition := "this is just a test"
 		dictionary := Dictionary{word: definition}
 
-		result, err := dictionary.Search(word)
-
-		assertError(t, err, nil)
-		assertStrings(t, result, definition)
+		assertDefinition(t, dictionary, word, definition)
 	})
 	t.Run("Test fetching non-existant word", func(t *testing.T) {
 		word := "hello"
@@ -22,14 +19,22 @@ func TestDictionary(t *testing.T) {
 		assertError(t, err, ErrUndefinedWord)
 	})
 	t.Run("Allow adding words to dictionary", func(t *testing.T) {
+		word := "test"
+		definition := "this is just a test"
 		dictionary := Dictionary{}
-		dictionary.Add("test", "this is just a test")
+		dictionary.Add(word, definition)
 
-		result, err := dictionary.Search("test")
-
-		assertError(t, err, nil)
-		assertStrings(t, result, "this is just a test")
+		assertDefinition(t, dictionary, word, definition)
 	})
+}
+
+func assertDefinition(t *testing.T, d Dictionary, word, definition string) {
+	t.Helper()
+
+	result, err := d.Search(word)
+
+	assertError(t, err, nil)
+	assertStrings(t, result, definition)
 }
 
 func assertStrings(t *testing.T, result, expected string) {
