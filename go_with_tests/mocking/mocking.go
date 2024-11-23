@@ -1,8 +1,9 @@
-package mocking
+package main
 
 import (
 	"fmt"
 	"io"
+	"os"
 	"time"
 )
 
@@ -13,7 +14,6 @@ type Sleeper interface {
 type SpySleeper struct {
 	Calls int
 }
-
 
 func (s *SpySleeper) Sleep() {
 	s.Calls++
@@ -40,6 +40,24 @@ func (s *SpyCountdownOperations) Write(p []byte) (n int, err error) {
 	return
 }
 
+type ConfigurableSleeper struct {
+	duration time.Duration
+	sleep func(time.Duration)
+}
+
+type SpyTime struct {
+	durationSlept time.Duration
+}
+
+func (s *SpyTime) Sleep(duration time.Duration) {
+	s.durationSlept = duration
+}
+
+func (c *ConfigurableSleeper) Sleep() {
+	c.sleep(c.duration)
+}
+
+
 const countdownStart = 3
 const finalWord = "Go!"
 
@@ -52,3 +70,7 @@ func Countdown(out io.Writer, sleeper Sleeper) {
 	fmt.Fprint(out, finalWord)
 }
 
+func main() {
+	sleeper := &ConfigurableSleeper{1 * time.Second, time.Sleep}
+	Countdown(os.Stdout, sleeper)
+}
