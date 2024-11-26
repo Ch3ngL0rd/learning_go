@@ -1,9 +1,9 @@
 package racer
 
 import (
-	"testing"
-	"net/http/httptest"
 	"net/http"
+	"net/http/httptest"
+	"testing"
 	"time"
 )
 
@@ -11,16 +11,16 @@ func TestRacer(t *testing.T) {
 	t.Run("compare speed of servers, returning the url of the fastest one", func(t *testing.T) {
 		slowServer := makeDelayedServer(20 * time.Millisecond)
 		fastServer := makeDelayedServer(0)
-	
+
 		defer slowServer.Close()
 		defer fastServer.Close()
-		
+
 		slowURL := slowServer.URL
 		fastURL := fastServer.URL
-	
+
 		want := fastURL
 		got, _ := Racer(slowURL, fastURL)
-	
+
 		if got != want {
 			t.Errorf("got %q, want %q", got, want)
 		}
