@@ -1,13 +1,13 @@
 package counter
 
 type Counter struct {
-
+	count int
 }
 
 func (c *Counter) Inc() {
-
+	c.count += 1
 }
 
 func (c Counter) Value() int {
-	return 0
+	return c.count
 }
