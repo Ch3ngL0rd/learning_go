@@ -5,9 +5,9 @@ type Counter struct {
 }
 
 func (c *Counter) Inc() {
-	c.count += 1
+	c.count++
 }
 
-func (c Counter) Value() int {
+func (c *Counter) Value() int {
 	return c.count
 }
