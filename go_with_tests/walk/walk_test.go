@@ -54,6 +54,23 @@ func TestWalk(t *testing.T) {
 			},
 			[]string{"Zachary", "Hi"},
 		},
+		{
+			"pass in a pointer to a struct",
+			&struct{
+				Name string
+			}{"Zachary"},
+			[]string{"Zachary"},
+		},
+		{
+			"slices",
+			[]struct{
+				Name string
+			}{
+				{"London"},
+				{"Reykjavík"},
+			},
+			[]string{"London", "Reykjavík"},
+		},		
 	}
 
 	for _, test := range cases {
